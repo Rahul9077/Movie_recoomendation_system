@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+    <style>
+        body{
+            background: url("../images/img2.jpg");
+<!--            background-color: blue;-->
+
+<!--  background-repeat: no-repeat;-->
+<!--  background-attachment: fixed;  -->
+<!--  background-size: cover;-->
+        }
+    </style>
+
+</head>
+
+<body >
+ <div class="login">
+	<h1 style="text-align: center;">Recommend Similar Movies </h1>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="http://localhost:5000/predict" method="post" >
+    	<center><input type="text" name="movie_name" placeholder="enter name of movie" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
+        </center>
+    </form>
+
+   <br>
+   <br>
+     <center>
+     <h3>
+         Movies Similar to {{name}}
+     </h3>
+     </center>
+ </div>
+ <center>
+    <ul>
+        {% for i in prediction_text %}
+        <p>{{i}}</p>
+        {% endfor %}
+    </ul>
+ </center>
+
+
+
+
+</body>
+
+</html>

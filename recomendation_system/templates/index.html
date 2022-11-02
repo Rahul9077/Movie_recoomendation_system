@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Recommendation</title>
+<style>
+        body{
+            background-image: url("static/images/img8.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            opacity: 1;
+        }
+    </style>
+
+</head>
+<body>
+<div class="login">
+	<h1 style="text-align: center;">RECOMMENDATION SYSTEM </h1>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="http://localhost:5000/predict" method="POST" >
+    	<center>
+<!--            <input type="text" name="movie_name" placeholder="enter name of movie" required="required" />-->
+         <select name="Movie_Titles" id="MovieTitles">
+             {%for i in movies_title%}
+                <option value="{{i}}">{{i}}</option>
+             {% endfor %}
+        </select>
+            <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
+        </center>
+    </form>
+
+   <br>
+   <br>
+     <center>
+     <h3>
+         {{name}}
+     </h3>
+     </center>
+ </div>
+ <center>
+    <ul>
+        {% for i in prediction_text %}
+        <p style=""><b>{{i}}</b></p>
+        {% endfor %}
+    </ul>
+ </center>
+
+</body>
+</html>
